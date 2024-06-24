@@ -1,15 +1,6 @@
-// Löschen von Dokumenten
+db.teams.deleteOne({"_id": ObjectId("56a7e1e8b2e7c6541f8032d9")})
+db.orders.deleteMany({"teamId": "teamLazio"})
+db.products.deleteMany({ $or: [ { _id: ObjectId("56a7e1e8b2e7c6541f8032d9") }, { _id: ObjectId("58d07a4d48b5770013f41e2f") } ] })
 
-// 1. Einzelnes Dokument in der customers-Collection löschen
-db.customers.deleteOne({ "_id": ObjectId("563237a41a4d68582c2509da") });
 
-// 2. Mehrere Dokumente in der orders-Collection löschen, wo orderCompleted true ist
-db.orders.deleteMany({ "orderCompleted": true });
 
-// 3. Mehrere Dokumente in der products-Collection löschen, die bestimmte _id haben
-db.products.deleteMany({
-    $or: [
-        { _id: ObjectId("563237a41a4d68582c2509da") },
-        { _id: ObjectId("563237a41a4d68582c2509db") } // Beispiel für eine weitere _id zum Löschen
-    ]
-});
